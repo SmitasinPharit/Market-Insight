@@ -3,7 +3,6 @@ import { mockSearchResults } from '../constants/mock';
 import { XIcon, SearchIcon } from "@heroicons/react/solid";
 import SearchResults from "./SearchResults";
 
-
 const Search = () => {
     const [input, setInput] = useState("");
     const [bestMatches, setBestMatches] = useState(mockSearchResults.result);
@@ -27,7 +26,6 @@ const Search = () => {
             onChange={(event) => {
                 setInput(event.target.value)
             }}
-            
             onKeyPress={(event) => {
                 if (event.key === "Enter") {
                     updateBestMatches();
@@ -35,9 +33,10 @@ const Search = () => {
             }}
             />
 
-            {input && (<button onClick={clear}>
-                <XIcon className="h-4 w-4 fill-gray-500"/> 
-            </button>
+            {input && (
+                <button onClick={clear} className="m-1">
+                    <XIcon className="h-4 w-4 fill-gray-500"/> 
+                </button>
             )}
             
             <button 
