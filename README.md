@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Market Insight
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was developed using React and utilizes Finnhub API to fetch real-time and historical stock data alongside the Recharts library for data visualization.
 
 ## Available Scripts
 
