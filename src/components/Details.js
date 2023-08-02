@@ -4,6 +4,7 @@ import ThemeContext from "../context/ThemeContext";
 
 const Details = ({ details }) => {
   const { darkMode } = useContext(ThemeContext);
+
   const detailsList = {
     name: "Name",
     country: "Country",
@@ -29,7 +30,7 @@ const Details = ({ details }) => {
           return (
             <li key={item} className="flex-1 flex justify-between items-center">
               <span>{detailsList[item]}</span>
-              <span>
+              <span className="font-bold">
                 {item === "marketCapitalization"
                   ? `${convertMillionToBillion(details[item])}B`
                   : details[item]}

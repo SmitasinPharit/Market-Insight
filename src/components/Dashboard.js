@@ -1,23 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
-import Header from "./Header";
-import Details from "./Details";
-import Overview from "./Overview";
-import Chart from "./Chart";
 import ThemeContext from "../context/ThemeContext";
+import Overview from "./Overview";
+import Details from "./Details";
+import Chart from "./Chart";
+import Header from "./Header";
 import StockContext from "../context/StockContext";
-import { fetchQuote, fetchStockDetails } from "../api/stock-api";
+import { fetchStockDetails, fetchQuote } from "../api/stock-api";
 
 const Dashboard = () => {
   const { darkMode } = useContext(ThemeContext);
+
   const { stockSymbol } = useContext(StockContext);
 
   const [stockDetails, setStockDetails] = useState({});
+
   const [quote, setQuote] = useState({});
 
   useEffect(() => {
     const updateStockDetails = async () => {
       try {
-        const result = fetchStockDetails(stockSymbol);
+        const result = await fetchStockDetails(stockSymbol);
         setStockDetails(result);
       } catch (error) {
         setStockDetails({});
@@ -38,6 +40,7 @@ const Dashboard = () => {
     updateStockDetails();
     updateStockOverview();
   }, [stockSymbol]);
+
   return (
     <div
       className={`h-screen grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 grid-rows-8 md:grid-rows-7 xl:grid-rows-5 auto-rows-fr gap-6 p-10 font-quicksand ${
